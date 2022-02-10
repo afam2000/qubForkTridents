@@ -16,7 +16,6 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.util.Vector;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
@@ -58,9 +57,7 @@ public final class mcLoyaltyFork extends JavaPlugin implements Listener {
         Entity moribund = ev.getEntity();
         Player player = ev.getEntity().getKiller();
         World world = moribund.getWorld();
-
-        boolean hasSkull = false; // Used to simulate looting on wither skeletons
-        int itemIndex = 0; // Used to tell what item_stack accessing in ev.getDrops()
+        boolean hasRare = false; // Used to simulate looting on wither skeletons
 
         if (simLooting) {
             if (player != null) {
@@ -68,38 +65,41 @@ public final class mcLoyaltyFork extends JavaPlugin implements Listener {
                 ItemStack offhand = pi.getItemInOffHand();
                 ItemStack mainhand = pi.getItemInMainHand();
                 if (offhand.containsEnchantment(Enchantment.LOOT_BONUS_MOBS) && !mainhand.containsEnchantment(Enchantment.LOOT_BONUS_MOBS)) {
-
                     for (ItemStack is : ev.getDrops()) {
-                        if (itemIndex > 1) {
-                            break;
-                        }
-                        if (is.toString().contains("WITHER")) {
-                            hasSkull = true;
-                            continue;
-                        }
-                        if (is.toString().contains("CHICKEN") || moribund instanceof Wither || moribund instanceof IronGolem || moribund instanceof Snowman
-                                || is.toString().contains("SWORD") || moribund instanceof Fish || is.toString().contains("WOOL") || is.toString().contains("SPONGE") || is.toString().contains("UNDYING")
-                                || is.toString().contains("SKULL")) {
+                        if (is.toString().contains("WITHER") || is.toString().contains("INGOT")||is.toString().contains("FOOT")|| is.toString().contains("SHULKER")) {
+                            hasRare = true;
                             continue;
                         }
 
+                        if (moribund instanceof Wither || moribund instanceof IronGolem || moribund instanceof Snowman || moribund instanceof Fox || moribund instanceof Fish
+                                || is.toString().contains("WOOL") || is.toString().contains("SPONGE") || is.toString().contains("UNDYING") || is.toString().contains("SKULL")
+                                || is.toString().contains("SWORD") || is.toString().contains("AXE") || is.toString().contains("SHOVEL") || is.toString().contains("BOW")
+                                || is.toString().contains("INGOT") || is.toString().contains("POTATO") || is.toString().contains("CARROT")
+                                || is.toString().contains("HELMET") || is.toString().contains("BOOTS") || is.toString().contains("LEGGINGS") || is.toString().contains("CHEST")
+                                || is.toString().contains("PUMPKIN") || is.toString().contains("JACK") || is.toString().contains("BANNER") || is.toString().contains("CHICKEN")
+                                || is.toString().contains("SADDLE")|| is.toString().contains("NAUTILUS")|| is.toString().contains("CARPET")) {
+                            continue;
+                        }
                         for (int i = 0; i < offhand.getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS) * 2; i++) {
                             int random = new Random().nextInt();
                             if (random % 5 == 0) {
                                 is.setAmount(is.getAmount() + 1);
                             }
                         }
-
-                        itemIndex++;
                     }
 
-                    // Simulate extra chance to find Wither Skull
-                    if (moribund instanceof WitherSkeleton) {
-                        if (!hasSkull) {
-                            int rareChance = getRandomNumber(0, 30); // Human-Tested Values
-                            if (rareChance < offhand.getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS)) {
+                    // Simulate extra chance to find rare drop
+                    if (!hasRare)
+                    {
+                        int rareChance = getRandomNumber(0, 30);
+                        if (rareChance < offhand.getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS))
+                        {
+                            if (moribund instanceof WitherSkeleton)
                                 ev.getDrops().add(new ItemStack(Material.WITHER_SKELETON_SKULL));
-                            }
+                            if (moribund instanceof Rabbit)
+                                ev.getDrops().add(new ItemStack(Material.RABBIT_FOOT));
+                            if (moribund instanceof Shulker)
+                                ev.getDrops().add(new ItemStack(Material.SHULKER_SHELL));
                         }
                     }
                 }
@@ -128,8 +128,7 @@ public final class mcLoyaltyFork extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void onTridentHit(ProjectileHitEvent ev)
-    {
+    public void onTridentHit(ProjectileHitEvent ev) {
         Projectile proj = ev.getEntity();
         ProjectileSource ps = proj.getShooter();
 
@@ -145,12 +144,12 @@ public final class mcLoyaltyFork extends JavaPlugin implements Listener {
                 }
             }
 
-                //Pickup nearby items
-                for (Entity ent : proj.getNearbyEntities(1.5, 1.0, 1.5)) {
-                    if (ent instanceof Item || ent instanceof ExperienceOrb) {
-                        proj.addPassenger(ent);
-                    }
+            //Pickup nearby items
+            for (Entity ent : proj.getNearbyEntities(1.5, 1.0, 1.5)) {
+                if (ent instanceof Item || ent instanceof ExperienceOrb) {
+                    proj.addPassenger(ent);
                 }
+            }
         }
     }
 }
