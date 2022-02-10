@@ -1,0 +1,13 @@
+name: mcLoyaltyFork
+version: '${project.version}'
+main: qub.mcLoyaltyFork
+api-version: 1.18
+authors: [ afam2000 ]
+description: My first plugin, lets Tridents impale dropped items, simulates offhand looting.
+commands:
+  toggleLootSim:
+    description: Toggles Offhand Looting Simulation for entire server
+    usage: /<command>
+  toggleCanImpale:
+    description: Toggle player impalement with tridents for entire server
+    usage: /<command>
