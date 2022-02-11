@@ -20,4 +20,4 @@ Having Looting in your offhand works again
   /toggleLootSim 
 
 # To-Do  
-Add config file for default values... so far everything is defaults to true on startups
+Add config file for default values, currently defaults to true on startups
