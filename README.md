@@ -7,10 +7,10 @@ Thrown Tridents will attach to dropped items+exp orbs on the ground
 [Use your Loyalty Trident to bring things to you!]  
 /toggleGroundPickup
 
-Killing a mob with a trident will automatically attach drops  
+Killing a mob with a thrown trident will automatically attach drops  
 /toggleDropPickup
 
-Loyalty Tridents can save their slot  
+Thrown Loyalty Tridents can save their slot  
   /toggleTridentHome
 
 Tridents can impale Players   
