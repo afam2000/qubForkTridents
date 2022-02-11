@@ -1,5 +1,5 @@
 # qubMCFORK
-My first Minecraft server plugin adds small QOL functionality to Loyalty Tridents.
+My first Minecraft server plugin adds small QOL functionality to Tridents [+fixes offhand looting].
 Developed and tested on 1.18.1 Paper server, but should work with Bukkit and Spigot as well.
 
 # Features
