@@ -2,7 +2,7 @@
 My first Minecraft server plugin adds small QOL functionality to Loyalty Tridents.
 Developed and tested on 1.18.1 Paper server, but should work with Bukkit and Spigot as well.
 
-#Features
+# Features
 Thrown Tridents will attach to dropped items+exp orbs on the ground  
 [Use your Loyalty Trident to bring things to you!]  
 /toggleGroundPickup
@@ -19,5 +19,5 @@ Tridents can impale Players
 Having Looting in your offhand works again   
   /toggleLootSim 
 
-#To-Do  
+# To-Do  
 Add config file for default values... so far everything is defaults to true on startups
