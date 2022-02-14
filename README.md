@@ -7,10 +7,10 @@ Thrown Tridents will attach to dropped items+exp orbs on the ground
 [Use your Loyalty Trident to bring things to you!]  
 /toggleGroundPickup
 
-Hold a Lead cancels thrown Trident damage and attaches to Entities
+Hold a Lead cancels thrown Trident damage and attaches to Entities  
 /toggleCanLead
 
-Hold an EnderPearl in your offhand to attach it to your thrown Trident
+Hold an EnderPearl in your offhand to attach it to your thrown Trident  
 /toggleCanPearl
 
 Killing a mob with a thrown trident will automatically attach drops  
