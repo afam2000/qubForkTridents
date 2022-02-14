@@ -11,3 +11,21 @@ commands:
   toggleCanImpale:
     description: Toggle player impalement with tridents for entire server
     usage: /<command>
+  toggleTridentHome:
+    description: Toggle Loyalty Trident reserve slot
+    usage: /<command>
+  toggleGroundPickup:
+    description: Toggle Trident attaching to ground items
+    usage: /<command>
+  toggleDropPickup:
+    description: Toggle Trident attaching to mob drops
+    usage: /<command>
+  toggleCanLead:
+    description: Toggle Leading Tridents
+    usage: /<command>
+  toggleCanPearl:
+    description: Toggle EnderPearl attaching to Tridents
+    usage: /<command>
+  clearTridentHome:
+    description: Clears stuck ThrownTridents
+    usage: /<command>

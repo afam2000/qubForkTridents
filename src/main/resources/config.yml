@@ -1,0 +1,7 @@
+simLooting: true
+canImpalePlayer: true
+tridentHasHome: true
+pickupFromGround: true
+pickupDrops: true
+canPearl: true
+canLead: true
